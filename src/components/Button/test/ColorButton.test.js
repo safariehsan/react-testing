@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
-import { replaceCamelCaseLetterWithSpace } from "./App";
+import ColorButton from "../ColorButton";
+import { replaceCamelCaseLetterWithSpace } from "../ColorButton";
 
 test("button has correct initial color and text", () => {
-  render(<App />);
+  render(<ColorButton />);
   // find an element with role of button and text of 'Change to blue'
   const myBtn = screen.getByRole("button", { name: "Change to blue" });
 
@@ -21,7 +21,7 @@ test("button has correct initial color and text", () => {
 });
 
 test("initial conditions", () => {
-  render(<App />);
+  render(<ColorButton />);
   const myBtn = screen.getByRole("button", { name: "Change to blue" });
   // expect the button to be enable at first initial
   expect(myBtn).toBeEnabled();
@@ -31,7 +31,7 @@ test("initial conditions", () => {
 });
 
 test("when checkbox is checked, button is disabled", () => {
-  render(<App />);
+  render(<ColorButton />);
   const myCheckbox = screen.getByRole("checkbox", { name: "Disable button" });
   const myBtn = screen.getByRole("button");
   // check the checkbox
@@ -45,7 +45,7 @@ test("when checkbox is checked, button is disabled", () => {
 });
 
 test("Disabled button has gray bg & turn into red", () => {
-  render(<App />);
+  render(<ColorButton />);
   const myCheckbox = screen.getByRole("checkbox", { name: "Disable button" });
   const myBtn = screen.getByRole("button", { name: "Change to blue" });
   fireEvent.click(myCheckbox);
@@ -55,7 +55,7 @@ test("Disabled button has gray bg & turn into red", () => {
 });
 
 test("Disabled button has gray bg & turn into blue", () => {
-  render(<App />);
+  render(<ColorButton />);
   const myCheckbox = screen.getByRole("checkbox", { name: "Disable button" });
   const myBtn = screen.getByRole("button", { name: "Change to blue" });
   fireEvent.click(myBtn);
